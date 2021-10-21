@@ -59,8 +59,8 @@ function idProfile() {
                         'Bearer ' + jwt
                 },
             });
-        //readdat = JSON.stringify(data, null, 4)
-        //console.log('Profile Info: \n' + readdat)
+        readdat = JSON.stringify(data, null, 4)
+        console.log('Profile Info: \n' + readdat)
 
         setOutputs(data)
         setLfarr(data.user_likes_from)
@@ -234,24 +234,26 @@ function idProfile() {
 
     useEffect(() => {
         const ffound = lfarr.find((e) =>
-            e.id = uid
+            e.id = id
         )
         const tfound = ltarr.find((e) =>
-            e.id = id
+            e.id = uid
         )
 
         fIndex = lfarr.indexOf(ffound);
         tIndex = ltarr.indexOf(tfound);
 
-        if (fIndex >= 0) {
+        if (ffound) {
             isLiked = true
-        } if (fIndex < 0) {
+        } if (ffound === undefined || ffound === null) {
             isLiked = false
         }
 
 
-        readdat = JSON.stringify(isLiked, null, 4)
-        console.log('log: \n' + readdat)
+        //readdat = JSON.stringify(ffound, null, 4)
+        //console.log('ffound: \n' + readdat)
+        //readdat = JSON.stringify(isLiked, null, 4)
+        //console.log('log: \n' + readdat)
     })
 
 

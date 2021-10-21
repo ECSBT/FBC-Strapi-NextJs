@@ -153,25 +153,27 @@ export function Profile() {
         handleLikes()
     }
 
-    const ffound = lfarr.find((e) =>
-        e.id === outputs.id
-    )
-    const tfound = ltarr.find((e) =>
-        e.id === outputs.id
-    )
+    useEffect(() => {
+        const ffound = lfarr.find((e) =>
+            e.id === outputs.id
+        )
+        const tfound = ltarr.find((e) =>
+            e.id === outputs.id
+        )
 
-    const fIndex = lfarr.indexOf(ffound);
-    const tIndex = ltarr.indexOf(tfound);
+        const fIndex = lfarr.indexOf(ffound);
+        const tIndex = ltarr.indexOf(tfound);
 
-    if (fIndex >= 0) {
-        isLiked = true
-    } if (fIndex < 0) {
-        isLiked = false
-    }
+        if (ffound) {
+            isLiked = true
+        } if (ffound === undefined || ffound === null) {
+            isLiked = false
+        }
 
 
-    readdat = JSON.stringify(isLiked, null, 4)
-    console.log('log: \n' + readdat)
+        readdat = JSON.stringify(isLiked, null, 4)
+        console.log('log: \n' + readdat)
+    })
 
 
     return (
