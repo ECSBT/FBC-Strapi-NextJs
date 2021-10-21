@@ -263,10 +263,6 @@ function idProfile() {
 
             <main className={styles.main}>
 
-                <h2>
-                    Your Profile
-                </h2>
-
                 <div className={styles.regcard}>
 
                     <div className={styles.profilehead}>
