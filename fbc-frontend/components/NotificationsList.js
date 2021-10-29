@@ -45,10 +45,10 @@ const NotificationsList = (props) => {
     } else {
         return (
             <div>
-                {nList.map((e, i) => {
+                {nList.map((e) => {
                     return (
-                        <div className={styles.contactcard}>
-                            <NotificationCard key={i} notification={e} />
+                        <div key={e.id} className={styles.contactcard}>
+                            <NotificationCard notification={e} />
                         </div>
                     );
                 })}

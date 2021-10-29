@@ -9,10 +9,9 @@ import { MdThumbUpOffAlt, MdThumbUp } from 'react-icons/md';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function idProfile() {
+function IdProfile() {
     const router = useRouter()
     let { id } = router.query
-    if (!id) return null
 
     var jwt = Cookies.get('token')
     var uid = Cookies.get('uid')
@@ -227,11 +226,6 @@ function idProfile() {
         }
     }
 
-    if (outputs.id === '') {
-        findUser()
-        findMe()
-    }
-
     useEffect(() => {
         const ffound = lfarr.find((e) =>
             e.id = id
@@ -248,6 +242,13 @@ function idProfile() {
         } if (ffound === undefined || ffound === null) {
             isLiked = false
         }
+
+        if (outputs.id === '') {
+            findUser()
+            findMe()
+        }
+
+        if (!id) return null
 
 
         //readdat = JSON.stringify(ffound, null, 4)
@@ -284,4 +285,4 @@ function idProfile() {
     )
 }
 
-export default idProfile;
+export default IdProfile;

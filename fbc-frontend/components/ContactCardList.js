@@ -34,10 +34,10 @@ const ContactCardList = (props) => {
 
     return (
         <div>
-            {userList.map((e, i) => {
+            {userList.map((e) => {
                 return (
-                    <div className={styles.contactcard}>
-                        <ContactCard key={i} user={e} />
+                    <div key={e.id} className={styles.contactcard}>
+                        <ContactCard user={e} />
                     </div>
                 );
             })}

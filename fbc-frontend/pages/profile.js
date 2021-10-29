@@ -11,14 +11,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 export function Profile() {
 
-    const router = useRouter()
+    const Router = useRouter()
     var jwt = Cookies.get('token')
     var uid = Cookies.get('uid')
 
     var likeList = []
-    var isLiked = false
-
-    var readdat = ''
 
     var [outputs, setOutputs] = useState({
         id: '',
@@ -92,7 +89,7 @@ export function Profile() {
                     }
                 });
             alert('You have unliked this profile')
-            router.reload()
+            Router.reload()
         } if (isLiked === false) {
             const { data } = await axios.get('http://localhost:1337/users/me',
                 {
@@ -126,7 +123,7 @@ export function Profile() {
                     }
                 });
             alert('You have liked this profile')
-            router.reload()
+            Router.reload()
         }
     }
 
@@ -145,15 +142,8 @@ export function Profile() {
     //    return
     //}
 
-    if (outputs.id === '') {
-        findMe()
-    }
-
-    if (likeList.length < lfarr.length) {
-        handleLikes()
-    }
-
     useEffect(() => {
+        
         const ffound = lfarr.find((e) =>
             e.id === outputs.id
         )
@@ -174,6 +164,15 @@ export function Profile() {
         readdat = JSON.stringify(isLiked, null, 4)
         console.log('log: \n' + readdat)
     })
+
+
+    if (outputs.id === '') {
+        findMe()
+    }
+
+    if (likeList.length < lfarr.length) {
+        handleLikes()
+    }
 
 
     return (
