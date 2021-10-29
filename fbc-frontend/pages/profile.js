@@ -16,6 +16,9 @@ export function Profile() {
     var uid = Cookies.get('uid')
 
     var likeList = []
+    var isLiked = null
+
+    var readdat = ''
 
     var [outputs, setOutputs] = useState({
         id: '',
